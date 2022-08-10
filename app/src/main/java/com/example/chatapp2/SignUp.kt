@@ -1,5 +1,6 @@
 package com.example.chatapp2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -48,6 +49,9 @@ class SignUp : AppCompatActivity() {
                     Toast.makeText(baseContext, "Authentication Success",
                         Toast.LENGTH_SHORT).show()
                     writeNewUser(mAuth.currentUser?.uid!!, edtName.text.toString(), email)
+                    val intent = Intent(this, SignUp::class.java)
+                    finish()
+                    startActivity(intent)
 
                 } else {
                     // If sign in fails, display a message to the user.
