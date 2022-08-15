@@ -62,7 +62,7 @@ class SignUp : AppCompatActivity() {
     }
 
     fun writeNewUser(userId: String, name: String, email: String) {
-        val user = User(name, email)
+        val user = User(name, email, userId)
         database.child("users").child(userId).setValue(user)
         Toast.makeText(baseContext, "Inside writeUser",
             Toast.LENGTH_SHORT).show()

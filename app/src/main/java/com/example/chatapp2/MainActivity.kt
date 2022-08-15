@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         userRecyclerView.layoutManager = LinearLayoutManager(this)
         userRecyclerView.adapter = adapter
 
+        val actionBar = supportActionBar
+
         database.child("users").addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -50,6 +52,9 @@ class MainActivity : AppCompatActivity() {
                     val currentUser = postSnapshot.getValue(User::class.java)
                     if(mAuth.currentUser?.email != currentUser?.email){
                         userList.add(currentUser!!)
+                    }
+                    else{
+                        actionBar!!.title = "${currentUser?.name}"
                     }
                 }
 //                Toast.makeText(this@MainActivity, "${userList[0].name}", Toast.LENGTH_SHORT).show()
